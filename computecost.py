@@ -54,16 +54,18 @@ data = [[6.1101,17.592],
 [11.7,8.0043]
 ]
 
-der0 = 0
-der1 = 0
+
 a = 0
 b = 0
 while True :
+  der0 = 0
+  der1 = 0
   for i in data :
     der0 = der0 + ( a + b*i[0] - i[1])/48
     der1 = der1 + ( a + b*i[0] - i[1])*i[0]/48
-  temp1 = a - 0.00001*der0
-  temp2 = b - 0.00001*der1
+  
+  temp1 = a - 0.0001*der0
+  temp2 = b - 0.0001*der1
   print(cost(data,temp1,temp2))
   if abs(temp1 - a) < 0.0001 and abs(temp2 - b) <0.0001 :
    break
