@@ -1,8 +1,3 @@
-def cost(data1,a1,b1) :
- sum = 0
- for l in data1 :
-    sum = sum + ( a1 + b1*l[0] - l[1])**2/96
- return sum
 data = [[6.1101,17.592],
 [5.5277,9.1302],
 [8.5186,13.662],
@@ -54,23 +49,20 @@ data = [[6.1101,17.592],
 [11.7,8.0043]
 ]
 
-
 a = 0
 b = 0
 while True :
-  der0 = 0
-  der1 = 0
+der0 = 0
+der1 = 0
   for i in data :
     der0 = der0 + ( a + b*i[0] - i[1])/48
     der1 = der1 + ( a + b*i[0] - i[1])*i[0]/48
-  
-  temp1 = a - 0.0001*der0
-  temp2 = b - 0.0001*der1
-  print(cost(data,temp1,temp2))
-  if abs(temp1 - a) < 0.0001 and abs(temp2 - b) <0.0001 :
-   break
+  temp1 = a - 0.01*der0
+  temp2 = b - 0.01*der1
   a = temp1
   b = temp2
+  if abs(temp1 - a) < 0.001 and abs(temp2 - b) <0.001 :
+   break
 x = float(input("Enter population"))
 sol = a + b*x
 print("profit is", sol)
